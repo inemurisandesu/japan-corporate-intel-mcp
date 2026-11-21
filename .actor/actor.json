@@ -1,7 +1,7 @@
 {
   "actorSpecification": 1,
   "name": "japan-corporate-intel-mcp",
-  "title": "Japan Corporate Intelligence (EDINET + gBizINFO + Corporate Number MCP & Actor)",
+  "title": "Japan Corporate Intel (EDINET + gBizINFO + NTA)",
   "description": "100% legal, non-scraping official open-data integrator for Japanese companies. Validates 13-digit NTA Corporate Numbers, queries official gBizINFO & FSA EDINET APIs using caller-supplied keys, and outputs unified English/Japanese JSON dossiers with mandatory government attribution.",
   "version": "0.1",
   "meta": {
