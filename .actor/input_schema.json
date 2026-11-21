@@ -1,0 +1,39 @@
+{
+  "title": "Japan Corporate Intelligence Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "corporateNumber": {
+      "title": "13-Digit Japanese Corporate Number (法人番号)",
+      "type": "string",
+      "description": "Official 13-digit National Tax Agency Corporate Number (e.g., 1010001008844).",
+      "editor": "textfield"
+    },
+    "companyName": {
+      "title": "Company Name Search (Optional)",
+      "type": "string",
+      "description": "Company name query for gBizINFO search when corporateNumber is unknown.",
+      "editor": "textfield"
+    },
+    "edinetDate": {
+      "title": "EDINET Filing Date (YYYY-MM-DD, Optional)",
+      "type": "string",
+      "description": "Filing date to query FSA EDINET API v2 documents list.",
+      "editor": "textfield"
+    },
+    "gbizApiToken": {
+      "title": "gBizINFO API Token (Optional, caller-supplied)",
+      "type": "string",
+      "description": "Free official METI gBizINFO API token from info.gbiz.go.jp.",
+      "editor": "textfield",
+      "isSecret": true
+    },
+    "edinetApiKey": {
+      "title": "FSA EDINET API v2 Subscription Key (Optional, caller-supplied)",
+      "type": "string",
+      "description": "Free official FSA EDINET API v2 key from api.edinet-fsa.go.jp.",
+      "editor": "textfield",
+      "isSecret": true
+    }
+  }
+}

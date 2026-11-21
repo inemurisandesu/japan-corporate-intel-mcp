@@ -1,0 +1,66 @@
+{
+  "name": "FlowCraft: Japan Corporate Due Diligence (gBizINFO + EDINET Official APIs)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "corporateNumber", "value": "1010001008844" },
+            { "name": "edinetDate", "value": "2026-11-20" }
+          ]
+        }
+      },
+      "id": "set-target",
+      "name": "Set Target Company",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://info.gbiz.go.jp/hojin/v1/hojin/{{$json.corporateNumber}}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-hojinInfo-api-token", "value": "={{$env.GBIZ_API_TOKEN}}" }
+          ]
+        }
+      },
+      "id": "fetch-gbiz",
+      "name": "Fetch METI gBizINFO (Official API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [700, 220]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.edinet-fsa.go.jp/api/v2/documents.json?date={{$json.edinetDate}}&type=2&Subscription-Key={{$env.EDINET_API_KEY}}"
+      },
+      "id": "fetch-edinet",
+      "name": "Fetch FSA EDINET v2 (Official API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [700, 380]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": { "main": [[{ "node": "Set Target Company", "type": "main", "index": 0 }]] },
+    "Set Target Company": {
+      "main": [[
+        { "node": "Fetch METI gBizINFO (Official API)", "type": "main", "index": 0 },
+        { "node": "Fetch FSA EDINET v2 (Official API)", "type": "main", "index": 0 }
+      ]]
+    }
+  },
+  "meta": {
+    "attribution": "出典：経済産業省gBizINFO・金融庁EDINET API v2・国税庁法人番号公表サイト"
+  }
+}
