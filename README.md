@@ -24,5 +24,9 @@ python3 -m src.mcp_server
 python3 -m unittest discover -s tests -v
 ```
 
+## Ready-to-Use Starter Kit & Japanese Guide
+- **BOOTH Starter Kit (ZIP + n8n Workflow + Setup Guide)**: https://inemuric.booth.pm/items/9195542
+- **Zenn Technical Guide (Japanese)**: https://zenn.dev/inemuri/articles/japan-open-data-edinet-gbiz-mcp
+
 ## Mandatory Attribution Notice
 本ツールは、国税庁法人番号公表サイト、経済産業省gBizINFO、金融庁EDINET API v2の公開仕様および公式APIデータを加工して出力します。出力結果の二次利用時は各省庁の利用規約に従い出典を明記してください。
